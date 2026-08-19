@@ -83,9 +83,10 @@
 				SOINS
 			</button>
 
-			<button onclick="showScreen('familyScreen')">
-				👨‍👩‍👧<br>
-				PROCHES
+			<button onclick="speak('Rechargez mon téléphone, s’il vous plaît')">
+				🔋<br>
+				RECHARGEZ<br>
+				MON TÉLÉPHONE
 			</button>
 			
 			<button onclick="showScreen('hygieneScreen')">
@@ -487,11 +488,11 @@
             BOUCHE<br>
             SÈCHE
         </button>
-
+	
         <button onclick="speak('J’ai la gorge sèche')">
             GORGE<br>
             SÈCHE
-        </button>
+        </button>		
 
         <button onclick="speak('Puis-je avoir quelque chose pour humidifier ma bouche ?')">
             HUMIDIFIER<br>
@@ -572,109 +573,6 @@
         <button onclick="speak('Expliquez-moi avant de commencer')">
             EXPLIQUEZ-MOI<br>
             AVANT
-        </button>
-
-    </div>
-
-</section>
-
-<!-- ======================================= -->
-<!-- PROCHES / FAMILLE -->
-<!-- ======================================= -->
-
-<section
-    id="familyScreen"
-    class="screen"
->
-
-    <button
-        class="back-button"
-        onclick="showScreen('homeScreen')"
-    >
-        ← RETOUR
-    </button>
-
-    <h1>Proches</h1>
-
-    <div class="phrase-buttons">
-
-        <button onclick="speak('Je voudrais voir ma famille')">
-            JE VEUX VOIR<br>
-            MA FAMILLE
-        </button>
-
-        <button onclick="speak('Je voudrais voir un ami')">
-            JE VEUX VOIR<br>
-            UN AMI
-        </button>
-
-        <button onclick="speak('Pouvez-vous appeler ma famille ?')">
-            APPELEZ<br>
-            MA FAMILLE
-        </button>
-
-        <button onclick="speak('Pouvez-vous appeler un ami ?')">
-            APPELEZ<br>
-            UN AMI
-        </button>
-
-		<button onclick="speak('Aidez-moi à envoyer un message, s’il vous plaît')">
-			AIDEZ-MOI À<br>
-			ENVOYER UN MESSAGE
-		</button>
-
-        <button onclick="speak('Je voudrais faire un appel vidéo')">
-            APPEL<br>
-            VIDÉO
-        </button>
-
-        <button onclick="speak('Qui a appelé ?')">
-            QUI A<br>
-            APPELÉ ?
-        </button>
-
-        <button onclick="speak('Qui est venu me voir ?')">
-            QUI EST<br>
-            VENU ?
-        </button>
-
-        <button onclick="speak('Quand revient-il ?')">
-            QUAND<br>
-            REVIENT-IL ?
-        </button>
-
-        <button onclick="speak('Dites-lui que je vais bien')">
-            DITES-LUI<br>
-            QUE JE VAIS BIEN
-        </button>
-
-        <button onclick="speak('Dites-lui que je veux le voir')">
-            DITES-LUI<br>
-            DE VENIR
-        </button>
-
-        <button onclick="speak('Dites-lui de ne pas s’inquiéter')">
-            QU'IL NE<br>
-            S'INQUIÈTE PAS
-        </button>
-
-        <button onclick="speak('Je suis trop fatigué pour recevoir quelqu’un maintenant')">
-            JE SUIS TROP<br>
-            FATIGUÉ
-        </button>
-
-        <button onclick="speak('Je préfère voir cette personne plus tard')">
-            PLUS TARD
-        </button>
-
-		<button onclick="speak('Lisez-moi mes messages, s’il vous plaît')">
-			LISEZ-MOI<br>
-			MES MESSAGES
-		</button>
-
-        <button onclick="speak('Rechargez mon téléphone, s’il vous plaît')">
-            RECHARGEZ<br>
-            MON TÉLÉPHONE
         </button>
 
     </div>
