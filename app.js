@@ -1,12 +1,57 @@
-let lastSpokenText = "";
+const VOICE_STORAGE_KEYS = {
+    male: "maVoixMaleVoiceName",
+    female: "maVoixFemaleVoiceName",
+    active: "maVoixActiveVoiceType"
+};
+
+
+function readLocalSetting(key, fallbackValue = "") {
+
+    try {
+        const value = localStorage.getItem(key);
+        return value !== null ? value : fallbackValue;
+    }
+    catch (error) {
+        return fallbackValue;
+    }
+}
+
+
+function writeLocalSetting(key, value) {
+
+    try {
+        localStorage.setItem(key, value);
+    }
+    catch (error) {
+        console.warn(
+            "Impossible d’enregistrer le réglage local :",
+            key,
+            error
+        );
+    }
+}
 
 
 let availableFrenchVoices = [];
 
-let maleVoiceName = "";
-let femaleVoiceName = "";
+let maleVoiceName = readLocalSetting(
+    VOICE_STORAGE_KEYS.male,
+    ""
+);
 
-let activeVoiceType = "male";
+let femaleVoiceName = readLocalSetting(
+    VOICE_STORAGE_KEYS.female,
+    ""
+);
+
+let activeVoiceType = readLocalSetting(
+    VOICE_STORAGE_KEYS.active,
+    "male"
+);
+
+if (activeVoiceType !== "male" && activeVoiceType !== "female") {
+    activeVoiceType = "male";
+}
 
 
 function speak(text) {
@@ -44,13 +89,22 @@ function speak(text) {
 
     if (selectedVoice) {
         message.voice = selectedVoice;
+        message.lang = selectedVoice.lang;
     }
 
 
     window.speechSynthesis.speak(message);
 }
 
+
 function showScreen(screenId) {
+
+    const selectedScreen = document.getElementById(screenId);
+
+    if (!selectedScreen) {
+        console.error("Écran introuvable :", screenId);
+        return;
+    }
 
     const screens = document.querySelectorAll(".screen");
 
@@ -58,12 +112,11 @@ function showScreen(screenId) {
         screen.classList.remove("active");
     });
 
-    const selectedScreen = document.getElementById(screenId);
-
     selectedScreen.classList.add("active");
 
     window.scrollTo(0, 0);
 }
+
 
 function loadFrenchVoices() {
 
@@ -90,7 +143,6 @@ function loadFrenchVoices() {
         femaleVoiceName
     );
 }
-
 
 
 function fillVoiceSelect(selectId, selectedName) {
@@ -155,14 +207,14 @@ function fillVoiceSelect(selectId, selectedName) {
 }
 
 
-
 function openVoiceScreen() {
 
     loadFrenchVoices();
 
     showScreen("voiceScreen");
-}
 
+    updateVoiceButtons();
+}
 
 
 function testVoice(type) {
@@ -196,7 +248,7 @@ function testVoice(type) {
 
     const message =
         new SpeechSynthesisUtterance(
-            "Bonjour Christian. Voici ma voix."
+            "Bonjour. Voici ma voix."
         );
 
     message.lang =
@@ -210,7 +262,6 @@ function testVoice(type) {
 
     window.speechSynthesis.speak(message);
 }
-
 
 
 function chooseVoice(type) {
@@ -236,6 +287,11 @@ function chooseVoice(type) {
         activeVoiceType =
             "male";
 
+        writeLocalSetting(
+            VOICE_STORAGE_KEYS.male,
+            maleVoiceName
+        );
+
     }
     else {
 
@@ -245,8 +301,18 @@ function chooseVoice(type) {
         activeVoiceType =
             "female";
 
+        writeLocalSetting(
+            VOICE_STORAGE_KEYS.female,
+            femaleVoiceName
+        );
+
     }
 
+
+    writeLocalSetting(
+        VOICE_STORAGE_KEYS.active,
+        activeVoiceType
+    );
 
     updateVoiceButtons();
 
@@ -256,7 +322,6 @@ function chooseVoice(type) {
             : "Voix féminine sélectionnée"
     );
 }
-
 
 
 function updateVoiceButtons() {
@@ -303,11 +368,11 @@ function updateVoiceButtons() {
 }
 
 
-
 window.speechSynthesis.addEventListener(
     "voiceschanged",
     loadFrenchVoices
 );
+
 
 let selectedPainLocation = "";
 
@@ -358,17 +423,6 @@ function resetPain() {
     document.getElementById("painStep1").classList.remove("hidden");
 }
 
-function speakCustomText() {
-
-    const text =
-        document.getElementById("customText").value.trim();
-
-    if (text === "") {
-        return;
-    }
-
-    speak(text);
-}
 
 function speakCustomText() {
 
@@ -417,6 +471,7 @@ function addText(text) {
         textArea.value.length
     );
 }
+
 
 const FAVORITES_STORAGE_KEY = "maVoixCustomFavorites";
 
@@ -588,10 +643,21 @@ document.addEventListener(
 
         renderCustomFavorites();
 
+        loadFrenchVoices();
+
+        updateVoiceButtons();
+
     }
 );
 
+
 if ("serviceWorker" in navigator) {
+
+    let serviceWorkerRefreshing = false;
+
+    const hadController =
+        navigator.serviceWorker.controller !== null;
+
 
     window.addEventListener(
         "load",
@@ -599,6 +665,11 @@ if ("serviceWorker" in navigator) {
 
             navigator.serviceWorker
                 .register("./sw.js")
+                .then(function(registration) {
+
+                    return registration.update();
+
+                })
                 .catch(function(error) {
 
                     console.error(
@@ -607,6 +678,25 @@ if ("serviceWorker" in navigator) {
                     );
 
                 });
+
+        }
+    );
+
+
+    navigator.serviceWorker.addEventListener(
+        "controllerchange",
+        function() {
+
+            if (
+                !hadController ||
+                serviceWorkerRefreshing
+            ) {
+                return;
+            }
+
+            serviceWorkerRefreshing = true;
+
+            window.location.reload();
 
         }
     );

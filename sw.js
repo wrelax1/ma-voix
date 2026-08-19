@@ -1,4 +1,4 @@
-const CACHE_NAME = "ma-voix-v14";
+const CACHE_NAME = "ma-voix-v15";
 
 const FILES_TO_CACHE = [
     "./",
@@ -19,7 +19,24 @@ self.addEventListener("install", function(event) {
             .open(CACHE_NAME)
             .then(function(cache) {
 
-                return cache.addAll(FILES_TO_CACHE);
+                const requests =
+                    FILES_TO_CACHE.map(function(url) {
+
+                        return new Request(
+                            url,
+                            {
+                                cache: "reload"
+                            }
+                        );
+
+                    });
+
+                return cache.addAll(requests);
+
+            })
+            .then(function() {
+
+                return self.skipWaiting();
 
             })
 
@@ -49,6 +66,11 @@ self.addEventListener("activate", function(event) {
                     })
 
                 );
+
+            })
+            .then(function() {
+
+                return self.clients.claim();
 
             })
 
