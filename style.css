@@ -161,8 +161,9 @@ button:focus-visible {
 
 .quick-bar .emergency {
     font-weight: 900;
-
-    border: 3px solid #111;
+    border: none;
+    background: #b7f7b7;
+    color: #111;
 }
 
 /* =========================================
