@@ -368,11 +368,22 @@ function updateVoiceButtons() {
 }
 
 
-window.speechSynthesis.addEventListener(
-    "voiceschanged",
-    loadFrenchVoices
-);
+/* Compatibilité voix Android / iPhone */
 
+if (
+    "speechSynthesis" in window &&
+    typeof window.speechSynthesis.addEventListener === "function"
+) {
+
+    window.speechSynthesis.addEventListener(
+        "voiceschanged",
+        loadFrenchVoices
+    );
+
+}
+
+
+/* Douleur */
 
 let selectedPainLocation = "";
 
