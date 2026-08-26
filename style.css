@@ -232,6 +232,7 @@ button:focus-visible {
    ========================================= */
 
 .back-button {
+	display: none;
     width: 100%;
     min-height: 64px;
 

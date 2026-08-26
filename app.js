@@ -96,6 +96,50 @@ function speak(text) {
     window.speechSynthesis.speak(message);
 }
 
+function handleTopRightButton() {
+
+    const activeScreen =
+        document.querySelector(".screen.active");
+
+    if (
+        !activeScreen ||
+        activeScreen.id === "homeScreen"
+    ) {
+        speak("J’ai besoin d’aide");
+        return;
+    }
+
+    const backButton =
+        activeScreen.querySelector(".back-button");
+
+    if (backButton) {
+        backButton.click();
+    }
+}
+
+
+function updateTopRightButton(screenId) {
+
+    const button =
+        document.getElementById("topRightButton");
+
+    if (!button) {
+        return;
+    }
+
+    if (screenId === "homeScreen") {
+
+        button.textContent = "AIDE";
+        button.classList.add("emergency");
+
+    }
+    else {
+
+        button.textContent = "← RETOUR";
+        button.classList.remove("emergency");
+
+    }
+}
 
 function showScreen(screenId) {
 
@@ -113,6 +157,8 @@ function showScreen(screenId) {
     });
 
     selectedScreen.classList.add("active");
+
+	updateTopRightButton(screenId);
 
     window.scrollTo(0, 0);
 }
