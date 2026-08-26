@@ -127,18 +127,20 @@ function updateTopRightButton(screenId) {
         return;
     }
 
-    if (screenId === "homeScreen") {
+	if (screenId === "homeScreen") {
 
-        button.textContent = "AIDE";
-        button.classList.add("emergency");
+		button.textContent = "AIDE";
+		button.classList.add("emergency");
+		button.classList.remove("return-mode");
 
-    }
-    else {
+	}
+	else {
 
-        button.textContent = "← RETOUR";
-        button.classList.remove("emergency");
+		button.textContent = "↶";
+		button.classList.add("emergency");
+		button.classList.add("return-mode");
 
-    }
+	}
 }
 
 function showScreen(screenId) {
