@@ -504,11 +504,22 @@ function getCustomFavorites() {
     }
 }
 
+function openFavoritesScreen() {
 
-function saveFavorite() {
+    renderCustomFavorites();
+
+    showScreen("favoritesScreen");
+}
+
+
+function saveFavoriteText(textAreaId) {
 
     const textArea =
-        document.getElementById("favoriteText");
+        document.getElementById(textAreaId);
+
+    if (!textArea) {
+        return;
+    }
 
     const phrase =
         textArea.value.trim();
@@ -541,6 +552,17 @@ function saveFavorite() {
     speak("Phrase ajoutée");
 }
 
+
+function saveFavorite() {
+
+    saveFavoriteText("favoriteText");
+}
+
+
+function saveFavoriteFromWrite() {
+
+    saveFavoriteText("customText");
+}
 
 function renderCustomFavorites() {
 

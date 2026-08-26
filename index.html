@@ -115,7 +115,7 @@
 				ÉCRIRE
 			</button>
 			
-			<button onclick="showScreen('favoritesScreen')">
+			<button onclick="openFavoritesScreen()">
 				⭐<br>
 				MES PHRASES
 			</button>
@@ -1012,6 +1012,13 @@
     </button>
 
     <button
+        class="add-favorite-button"
+        onclick="saveFavoriteFromWrite()"
+    >
+        ⭐ ENREGISTRER DANS MES PHRASES
+    </button>
+
+    <button
         class="clear-text-button"
         onclick="clearCustomText()"
     >
@@ -1065,68 +1072,6 @@
 		</button>
 
 	</div>
-
-
-<h2>Phrases rapides</h2>
-    <div class="phrase-buttons">
-
-        <button onclick="speak('J’ai besoin d’être aspiré')">
-            J'AI BESOIN<br>
-            D'ÊTRE ASPIRÉ
-        </button>
-
-        <button onclick="speak('Remontez-moi dans le lit, s’il vous plaît')">
-            REMONTEZ-MOI
-        </button>
-
-        <button onclick="speak('J’ai la bouche très sèche')">
-            BOUCHE<br>
-            SÈCHE
-        </button>
-
-        <button onclick="speak('J’ai mal')">
-            J'AI MAL
-        </button>
-
-        <button onclick="speak('Je voudrais voir une infirmière')">
-            INFIRMIÈRE
-        </button>
-
-        <button onclick="speak('Je voudrais voir un médecin')">
-            MÉDECIN
-        </button>
-
-        <button onclick="speak('Je n’ai pas compris')">
-            JE N'AI PAS<br>
-            COMPRIS
-        </button>
-
-        <button onclick="speak('Laissez-moi un peu de temps pour répondre')">
-            LAISSEZ-MOI<br>
-            DU TEMPS
-        </button>
-
-        <button onclick="speak('Je voudrais dormir')">
-            JE VEUX<br>
-            DORMIR
-        </button>
-
-        <button onclick="speak('Restez un peu avec moi, s’il vous plaît')">
-            RESTEZ<br>
-            AVEC MOI
-        </button>
-
-        <button onclick="speak('Je voudrais être seul un moment')">
-            JE VEUX<br>
-            ÊTRE SEUL
-        </button>
-
-        <button onclick="speak('Je suis bien comme ça')">
-            JE SUIS BIEN<br>
-            COMME ÇA
-        </button>
-
-    </div>
 
 </section>
 
