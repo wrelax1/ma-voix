@@ -657,6 +657,11 @@ function addText(text) {
    PARTAGER MA VOIX PAR EMAIL
    ========================================= */
 
+let shareEmailAddress = "";
+let shareEmailSubject = "";
+let shareEmailBody = "";
+
+
 function shareAppByEmail() {
 
     const emailInput =
@@ -665,8 +670,15 @@ function shareAppByEmail() {
     const messageElement =
         document.getElementById("shareMessage");
 
+    const preview =
+        document.getElementById("sharePreview");
 
-    if (!emailInput || !messageElement) {
+
+    if (
+        !emailInput ||
+        !messageElement ||
+        !preview
+    ) {
         return;
     }
 
@@ -678,12 +690,12 @@ function shareAppByEmail() {
     messageElement.textContent = "";
 
 
-    /* Vérification de l'adresse email */
-
     if (
         email === "" ||
         !emailInput.checkValidity()
     ) {
+
+        preview.classList.add("hidden");
 
         messageElement.textContent =
             "Veuillez saisir une adresse email valide.";
@@ -694,47 +706,132 @@ function shareAppByEmail() {
     }
 
 
-    /* Vérification d'une connexion Internet */
+    shareEmailAddress =
+        email;
 
-    if (!navigator.onLine) {
 
-        messageElement.textContent =
-            "Aucune connexion Internet détectée.";
+    shareEmailSubject =
+        "Une app pour faire parler un patient aphone";
 
+
+    shareEmailBody =
+`Vous êtes invité-e à découvrir « Ma Voix », une application gratuite et simple, développée à partir des besoins rencontrés auprès de patients et de soignants en milieu hospitalier à Genève, pour aider les patients avec trachéotomie ou aphones à sortir de leur prison du silence.
+
+Le principe de l'application est très simple :
+
+Le patient dispose de gros boutons correspondant à ce qu'il peut vouloir dire — par exemple Oui, Non, Stop, HEP!, J'ai mal, Respiration, Position, Soins, Toilettes, Famille / Amis, Émotions, Questions, etc.
+
+Il lui suffit d'appuyer sur un bouton et le téléphone ou la tablette prononce la phrase à sa place.
+
+Quelques informations importantes :
+
+• L'application ne nécessite aucun compte ; 0 impact sur la confidentialité des données.
+
+• Elle fonctionne sur Android et iPhone, smartphone et tablette, avec un affichage adaptatif à la taille de l'écran.
+
+• Une connexion Internet est nécessaire uniquement pour la première installation et pour les éventuelles mises à jour ultérieures.
+
+• Après son installation, l'application peut fonctionner sans connexion Internet.
+
+Vous pouvez accéder à l'application ici :
+
+https://wrelax1.github.io/ma-voix/
+
+INSTALLATION SUR IPHONE
+
+1. Ouvrir l'adresse ci-dessus avec Safari.
+2. Appuyer sur le bouton Partager.
+3. Choisir « Ajouter à l'écran d'accueil ».
+4. Vérifier que le nom est « Ma Voix », puis appuyer sur « Ajouter ».
+5. Ma Voix apparaîtra comme une application normale.
+
+INSTALLATION SUR ANDROID
+
+1. Ouvrir l'adresse ci-dessus avec un navigateur.
+2. Appuyer sur les trois points ⋮.
+3. Choisir « Installer l'application » ou « Ajouter à l'écran d'accueil ».
+4. Valider « Ma Voix ».
+5. Ma Voix apparaîtra comme une application normale.
+
+Redonnons une voix à ceux qui en sont privés.`;
+
+
+    document.getElementById(
+        "sharePreviewEmail"
+    ).textContent =
+        shareEmailAddress;
+
+
+    document.getElementById(
+        "sharePreviewSubject"
+    ).textContent =
+        shareEmailSubject;
+
+
+    document.getElementById(
+        "sharePreviewBody"
+    ).textContent =
+        shareEmailBody;
+
+
+    preview.classList.remove("hidden");
+
+
+    messageElement.textContent =
+        "Vérifiez le message ci-dessous avant de l'envoyer.";
+
+
+    preview.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
+
+
+async function copyAndOpenMail() {
+
+    if (
+        !shareEmailAddress ||
+        !shareEmailSubject ||
+        !shareEmailBody
+    ) {
         return;
     }
 
 
-    const subject =
-        "Une app pour faire parler un patient aphone";
+    const messageElement =
+        document.getElementById("shareMessage");
 
 
-	const body =
-	`Vous êtes invité-e à découvrir « Ma Voix », une application gratuite destinée à aider les patients avec trachéotomie ou aphones à communiquer.
+    try {
 
-	Découvrir et installer Ma Voix :
-	https://wrelax1.github.io/ma-voix/
+        await navigator.clipboard.writeText(
+            shareEmailBody
+        );
 
-	L'application ne nécessite aucun compte ; 0 impact sur la confidentialité des données.
+        if (messageElement) {
+            messageElement.textContent =
+                "Message copié. Ouverture de votre messagerie…";
+        }
 
-	Après son installation, Ma Voix peut fonctionner sans connexion Internet.
+    }
+    catch (error) {
 
-	Les instructions d'installation pour iPhone, Android, smartphone et tablette sont disponibles dans l'application.
+        if (messageElement) {
+            messageElement.textContent =
+                "Ouverture de votre messagerie… Le message reste affiché ci-dessous.";
+        }
 
-	Redonnons une voix à ceux qui en sont privés.`;
-
-
-    const mailtoUrl =
-        "mailto:" +
-        encodeURIComponent(email) +
-        "?subject=" +
-        encodeURIComponent(subject) +
-        "&body=" +
-        encodeURIComponent(body);
+    }
 
 
-    messageElement.textContent =
-        "Ouverture de votre messagerie…";
+	const mailtoUrl =
+		"mailto:" +
+		shareEmailAddress +
+		"?subject=" +
+		encodeURIComponent(shareEmailSubject) +
+		"&body=" +
+		encodeURIComponent(shareEmailBody);
 
 
     window.location.href =

@@ -1409,6 +1409,7 @@
 			>
 
 			<button
+				type="button"
 				class="share-button"
 				onclick="shareAppByEmail()"
 			>
@@ -1420,6 +1421,56 @@
 				class="share-message"
 				aria-live="polite"
 			></p>
+
+			<div
+				id="sharePreview"
+				class="share-preview hidden"
+			>
+
+				<h2>Message prêt à envoyer</h2>
+
+				<p class="share-preview-label">
+					DESTINATAIRE
+				</p>
+
+				<div
+					id="sharePreviewEmail"
+					class="share-preview-field"
+				></div>
+
+				<p class="share-preview-label">
+					OBJET
+				</p>
+
+				<div
+					id="sharePreviewSubject"
+					class="share-preview-field"
+				></div>
+
+				<p class="share-preview-label">
+					MESSAGE
+				</p>
+
+				<div
+					id="sharePreviewBody"
+					class="share-preview-body"
+				></div>
+
+				<button
+					type="button"
+					class="share-open-button"
+					onclick="copyAndOpenMail()"
+				>
+					📋 COPIER ET OUVRIR<br>
+					MA MESSAGERIE
+				</button>
+
+				<p class="share-copy-help">
+					Si votre messagerie n'insère pas automatiquement le texte,
+					celui-ci aura déjà été copié : il suffira de le coller.
+				</p>
+
+			</div>
 
 		</div>		
 
