@@ -243,6 +243,32 @@ button:focus-visible {
     font-size: clamp(17px, 3.8vw, 24px);
 }
 
+/* =========================================
+   SOINS — PHYSIO / ERGO / LOGO
+   ========================================= */
+
+.care-therapists {
+    grid-column: 1 / -1;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: clamp(6px, 2vw, 12px);
+}
+
+.care-therapists button {
+    min-width: 0;
+
+    min-height: clamp(88px, 13vh, 125px);
+
+    padding:
+        clamp(6px, 1.5vw, 12px)
+        clamp(3px, 1vw, 8px);
+
+    font-size: clamp(16px, 3.5vw, 23px);
+}
 
 /* =========================================
    RETOUR
