@@ -700,6 +700,105 @@ button:focus-visible {
     outline-offset: 3px;
 }
 
+/* =========================================
+   À PROPOS — PARTAGER MA VOIX
+   ========================================= */
+
+.share-app {
+    margin-top: clamp(24px, 5vw, 36px);
+
+    padding-top: clamp(22px, 4vw, 30px);
+
+    border-top: 2px solid #e2e4e7;
+}
+
+.share-app h2 {
+    margin:
+        0
+        0
+        clamp(16px, 3vw, 22px);
+
+    text-align: center;
+
+    font-size: clamp(22px, 4.5vw, 30px);
+}
+
+.share-app p {
+    font-size: clamp(18px, 3.6vw, 22px);
+    line-height: 1.45;
+}
+
+.share-email-label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: clamp(17px, 3.3vw, 20px);
+    font-weight: 700;
+}
+
+.share-email-input {
+    display: block;
+
+    width: 100%;
+
+    min-height: clamp(58px, 8vh, 72px);
+
+    padding:
+        clamp(10px, 2vw, 14px)
+        clamp(12px, 2.5vw, 16px);
+
+    border: 3px solid #aaa;
+    border-radius: 14px;
+
+    background: white;
+    color: #111;
+
+    font-family: inherit;
+
+    font-size: clamp(18px, 3.8vw, 22px);
+}
+
+.share-email-input:focus {
+    border-color: #222;
+
+    outline: 3px solid #ddd;
+    outline-offset: 2px;
+}
+
+.share-button {
+    width: 100%;
+
+    min-height: clamp(68px, 10vh, 88px);
+
+    margin-top: clamp(12px, 2.5vw, 18px);
+
+    padding: clamp(10px, 2vw, 14px);
+
+    background: #e8eefc;
+    color: #0b57d0;
+
+    border: 2px solid #cbd8f5;
+
+    font-size: clamp(20px, 4vw, 26px);
+    font-weight: 900;
+}
+
+.share-message {
+    min-height: 28px;
+
+    margin:
+        clamp(10px, 2vw, 14px)
+        0
+        0 !important;
+
+    padding: 0;
+
+    text-align: center;
+
+    font-size: clamp(16px, 3vw, 19px) !important;
+    font-weight: 700;
+}
 
 /* =========================================
    À PROPOS — PETITS ÉCRANS
@@ -722,4 +821,16 @@ button:focus-visible {
     .about-email {
         font-size: 19px;
     }
+	
+	.share-app p {
+		font-size: 18px;
+	}
+
+	.share-email-input {
+		font-size: 18px;
+	}
+
+	.share-button {
+		font-size: 21px;
+	}
 }

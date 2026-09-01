@@ -1086,94 +1086,85 @@
 
     <h1>Famille / Amis</h1>
 
-    <h2>Relation / Politesse</h2>
+	<div class="phrase-buttons">
 
-    <div class="phrase-buttons">
+		<button onclick="speak('Bonjour')">
+			BONJOUR
+		</button>
 
-        <button onclick="speak('À bientôt')">
-            À BIENTÔT
-        </button>
+		<button onclick="speak('À bientôt')">
+			À BIENTÔT
+		</button>
 
-        <button onclick="speak('Bonjour')">
-            BONJOUR
-        </button>
+		<button onclick="speak('Je suis content de te voir')">
+			JE SUIS CONTENT<br>
+			DE TE VOIR
+		</button>
 
-        <button onclick="speak('Désolé')">
-            DÉSOLÉ
-        </button>
+		<button onclick="speak('Tu m’as manqué')">
+			TU M'AS MANQUÉ
+		</button>
 
-        <button onclick="speak('Je suis content de te voir')">
-            JE SUIS CONTENT<br>
-            DE TE VOIR
-        </button>
+		<button onclick="speak('Je t’aime')">
+			JE T'AIME
+		</button>
 
-        <button onclick="speak('Je t’aime')">
-            JE T'AIME
-        </button>
+		<button onclick="speak('Merci')">
+			MERCI
+		</button>
 
-        <button onclick="speak('Merci')">
-            MERCI
-        </button>
+		<button onclick="speak('Désolé')">
+			DÉSOLÉ
+		</button>
 
-        <button onclick="speak('Ne t’inquiète pas')">
-            NE T'INQUIÈTE PAS
-        </button>
+		<button onclick="speak('Ne t’inquiète pas')">
+			NE T'INQUIÈTE PAS
+		</button>
 
-        <button onclick="speak('Reste encore un peu avec moi')">
-            RESTE ENCORE<br>
-            UN PEU
-        </button>
+		<button onclick="speak('Reste encore un peu avec moi')">
+			RESTE ENCORE<br>
+			UN PEU
+		</button>
 
-        <button onclick="speak('Tu m’as manqué')">
-            TU M'AS MANQUÉ
-        </button>
+		<button onclick="speak('Raconte-moi')">
+			RACONTE-MOI
+		</button>
 
-    </div>
+		<button onclick="speak('Ça va mieux')">
+			ÇA VA MIEUX
+		</button>
 
+		<button onclick="speak('Je vais bien')">
+			JE VAIS BIEN
+		</button>
 
-    <h2>Conversation</h2>
+		<button onclick="speak('Je suis fatigué, mais ça va')">
+			JE SUIS FATIGUÉ,<br>
+			MAIS ÇA VA
+		</button>
 
-    <div class="phrase-buttons">
+		<button onclick="speak('Je ne sais pas')">
+			JE NE SAIS PAS
+		</button>
 
-        <button onclick="speak('Ça va mieux')">
-            ÇA VA MIEUX
-        </button>
+		<button onclick="speak('Comme tu veux')">
+			COMME TU VEUX
+		</button>
 
-        <button onclick="speak('Changeons de sujet')">
-            CHANGEONS<br>
-            DE SUJET
-        </button>
+		<button onclick="speak('Peut-être')">
+			PEUT-ÊTRE
+		</button>
 
-        <button onclick="speak('Comme tu veux')">
-            COMME TU VEUX
-        </button>
+		<button onclick="speak('Changeons de sujet')">
+			CHANGEONS<br>
+			DE SUJET
+		</button>
 
-        <button onclick="speak('Continue')">
-            CONTINUE
-        </button>
+		<button onclick="speak('Continue')">
+			CONTINUE
+		</button>
 
-        <button onclick="speak('Je ne sais pas')">
-            JE NE SAIS PAS
-        </button>
-
-        <button onclick="speak('Je suis fatigué, mais ça va')">
-            JE SUIS FATIGUÉ,<br>
-            MAIS ÇA VA
-        </button>
-
-        <button onclick="speak('Je vais bien')">
-            JE VAIS BIEN
-        </button>
-
-        <button onclick="speak('Peut-être')">
-            PEUT-ÊTRE
-        </button>
-
-        <button onclick="speak('Raconte-moi')">
-            RACONTE-MOI
-        </button>
-
-    </div>
+	</div>
 
 </section>
 
@@ -1363,7 +1354,7 @@
 
         <p>
             Cette application a pour but d'aider des patients hospitalisés
-            avec trachéotomie à exprimer leurs besoins et leurs émotions
+            avec trachéotomie ou aphones à exprimer leurs besoins et leurs émotions
             auprès du personnel soignant, de leur famille et de leurs proches aidants,
             par la simple pression de boutons très lisibles sur une tablette
             ou un smartphone.
@@ -1384,6 +1375,53 @@
         >
             ✉️ wwinfried@gmail.com
         </a>
+		
+		<div class="share-app">
+
+			<h2>Partager Ma Voix</h2>
+
+			<p>
+				Vous souhaitez faire connaître cette application à un collègue
+				soignant ou à un proche aidant ?
+			</p>
+
+			<p>
+				Activez une connexion Internet, saisissez simplement son adresse
+				email puis cliquez sur <strong>PARTAGER</strong>.
+				Un message contenant le lien vers l'application et les instructions
+				pour l'installer hors connexion sera préparé.
+			</p>
+
+			<label
+				class="share-email-label"
+				for="shareEmail"
+			>
+				Email du destinataire
+			</label>
+
+			<input
+				id="shareEmail"
+				class="share-email-input"
+				type="email"
+				inputmode="email"
+				autocomplete="email"
+				placeholder="adresse@email.com"
+			>
+
+			<button
+				class="share-button"
+				onclick="shareAppByEmail()"
+			>
+				✉️ PARTAGER
+			</button>
+
+			<p
+				id="shareMessage"
+				class="share-message"
+				aria-live="polite"
+			></p>
+
+		</div>		
 
     </div>
 
