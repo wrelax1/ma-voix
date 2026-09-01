@@ -97,10 +97,15 @@
 				QUESTIONS<br>
 				MEDECIN
 			</button>
+			
+			<button onclick="showScreen('understandScreen')">
+				👂<br>
+				COMPRENDRE
+			</button>
 
 			<button onclick="showScreen('talkScreen')">
-				💬<br>
-				PARLER
+				👥<br>
+				FAMILLE / AMIS
 			</button>
 					
 			<button onclick="showScreen('emotionScreen')">
@@ -1064,7 +1069,7 @@
 </section>
 
 <!-- ======================================= -->
-<!-- PARLER -->
+<!-- FAMILLE / AMIS -->
 <!-- ======================================= -->
 
 <section
@@ -1079,48 +1084,9 @@
         ← RETOUR
     </button>
 
-    <h1>Parler</h1>
+    <h1>Famille / Amis</h1>
 
-    <div class="phrase-buttons">
-
-        <button onclick="showScreen('relationScreen')">
-            ❤️<br>
-            RELATION /<br>
-            POLITESSE
-        </button>
-
-        <button onclick="showScreen('conversationScreen')">
-            💬<br>
-            CONVERSATION
-        </button>
-
-        <button onclick="showScreen('understandScreen')">
-            👂<br>
-            COMPRENDRE /<br>
-            SE FAIRE COMPRENDRE
-        </button>
-
-    </div>
-
-</section>
-
-<!-- ======================================= -->
-<!-- RELATION / POLITESSE -->
-<!-- ======================================= -->
-
-<section
-    id="relationScreen"
-    class="screen"
->
-
-    <button
-        class="back-button"
-        onclick="showScreen('talkScreen')"
-    >
-        ← RETOUR
-    </button>
-
-    <h1>Relation / Politesse</h1>
+    <h2>Relation / Politesse</h2>
 
     <div class="phrase-buttons">
 
@@ -1164,25 +1130,8 @@
 
     </div>
 
-</section>
 
-<!-- ======================================= -->
-<!-- CONVERSATION -->
-<!-- ======================================= -->
-
-<section
-    id="conversationScreen"
-    class="screen"
->
-
-    <button
-        class="back-button"
-        onclick="showScreen('talkScreen')"
-    >
-        ← RETOUR
-    </button>
-
-    <h1>Conversation</h1>
+    <h2>Conversation</h2>
 
     <div class="phrase-buttons">
 
@@ -1239,7 +1188,7 @@
 
     <button
         class="back-button"
-        onclick="showScreen('talkScreen')"
+        onclick="showScreen('homeScreen')"
     >
         ← RETOUR
     </button>
