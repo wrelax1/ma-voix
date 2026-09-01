@@ -101,13 +101,13 @@ function handleTopRightButton() {
     const activeScreen =
         document.querySelector(".screen.active");
 
-    if (
-        !activeScreen ||
-        activeScreen.id === "homeScreen"
-    ) {
-        speak("J’ai besoin d’aide");
-        return;
-    }
+	if (
+		!activeScreen ||
+		activeScreen.id === "homeScreen"
+	) {
+		playAttentionAlarm();
+		return;
+	}
 
     const backButton =
         activeScreen.querySelector(".back-button");
@@ -311,6 +311,122 @@ function testVoice(type) {
     window.speechSynthesis.speak(message);
 }
 
+/* =========================================
+   SONNERIE D'APPEL HEP!
+   ========================================= */
+
+let attentionAudioContext = null;
+
+
+function playAttentionAlarm() {
+
+    const AudioContext =
+        window.AudioContext ||
+        window.webkitAudioContext;
+
+    if (!AudioContext) {
+        return;
+    }
+
+
+    if (!attentionAudioContext) {
+        attentionAudioContext =
+            new AudioContext();
+    }
+
+
+    const ctx =
+        attentionAudioContext;
+
+
+    if (ctx.state === "suspended") {
+        ctx.resume();
+    }
+
+
+    const startTime =
+        ctx.currentTime + 0.05;
+
+
+    /*
+       4 séries de deux bips.
+       Durée totale : environ 4 secondes.
+    */
+
+    for (let i = 0; i < 4; i++) {
+
+        const baseTime =
+            startTime + (i * 1.0);
+
+        createAlarmTone(
+            ctx,
+            880,
+            baseTime,
+            0.22
+        );
+
+        createAlarmTone(
+            ctx,
+            1175,
+            baseTime + 0.30,
+            0.30
+        );
+    }
+}
+
+
+function createAlarmTone(
+    ctx,
+    frequency,
+    startTime,
+    duration
+) {
+
+    const oscillator =
+        ctx.createOscillator();
+
+    const gain =
+        ctx.createGain();
+
+
+    oscillator.type =
+        "sine";
+
+    oscillator.frequency.value =
+        frequency;
+
+
+    gain.gain.setValueAtTime(
+        0.0001,
+        startTime
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+        0.8,
+        startTime + 0.02
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+        0.0001,
+        startTime + duration
+    );
+
+
+    oscillator.connect(gain);
+
+    gain.connect(
+        ctx.destination
+    );
+
+
+    oscillator.start(
+        startTime
+    );
+
+    oscillator.stop(
+        startTime + duration + 0.05
+    );
+}
 
 function chooseVoice(type) {
 
