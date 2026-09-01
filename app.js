@@ -129,7 +129,7 @@ function updateTopRightButton(screenId) {
 
 	if (screenId === "homeScreen") {
 
-		button.textContent = "AIDE";
+		button.textContent = "HEP!";
 		button.classList.add("emergency");
 		button.classList.remove("return-mode");
 

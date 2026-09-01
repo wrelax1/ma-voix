@@ -43,32 +43,32 @@ textarea {
     margin: 0 auto;
 
     padding:
-        18px
-        16px
-        calc(30px + env(safe-area-inset-bottom));
+        clamp(12px, 2.5vw, 22px)
+        clamp(10px, 3vw, 20px)
+        calc(clamp(24px, 4vw, 40px) + env(safe-area-inset-bottom));
 }
 
 h1 {
     margin:
-        8px
+        clamp(6px, 1.5vw, 12px)
         0
-        24px;
+        clamp(16px, 4vw, 28px);
 
     text-align: center;
 
-    font-size: 32px;
+    font-size: clamp(26px, 6vw, 40px);
     line-height: 1.1;
 }
 
 h2 {
     margin:
-        24px
+        clamp(18px, 4vw, 28px)
         0
-        18px;
+        clamp(14px, 3vw, 20px);
 
     text-align: center;
 
-    font-size: 24px;
+    font-size: clamp(21px, 4.5vw, 30px);
     line-height: 1.2;
 }
 
@@ -78,17 +78,17 @@ h2 {
    ========================================= */
 
 button {
-    min-height: 96px;
+    min-height: clamp(76px, 11vh, 110px);
 
-    padding: 14px;
+    padding: clamp(9px, 2.5vw, 16px);
 
     border: 2px solid #d5d7da;
-    border-radius: 16px;
+    border-radius: clamp(12px, 2.5vw, 16px);
 
     background: white;
     color: #111;
 
-    font-size: 22px;
+    font-size: clamp(18px, 4vw, 26px);
     font-weight: 700;
     line-height: 1.2;
 
@@ -97,10 +97,6 @@ button {
     box-shadow:
         0 2px 5px rgba(0, 0, 0, 0.12);
 
-    /*
-       Important sur smartphone :
-       évite zoom et gestes parasites
-    */
     touch-action: manipulation;
 
     -webkit-tap-highlight-color:
@@ -133,14 +129,14 @@ button:focus-visible {
     display: grid;
 
     grid-template-columns:
-        repeat(4, 1fr);
+        repeat(4, minmax(0, 1fr));
 
-    gap: 6px;
+    gap: clamp(4px, 1.3vw, 8px);
 
     padding:
-        calc(8px + env(safe-area-inset-top))
-        8px
-        8px;
+        calc(clamp(6px, 1.5vw, 10px) + env(safe-area-inset-top))
+        clamp(5px, 1.5vw, 10px)
+        clamp(6px, 1.5vw, 10px);
 
     background: #202124;
 
@@ -149,14 +145,21 @@ button:focus-visible {
 }
 
 .quick-bar button {
-    min-height: 72px;
+    min-width: 0;
 
-    padding: 6px 3px;
+    min-height: clamp(62px, 10vh, 86px);
+
+    padding:
+        clamp(4px, 1vw, 8px)
+        clamp(2px, 0.8vw, 6px);
 
     border: none;
-    border-radius: 10px;
+    border-radius: clamp(8px, 2vw, 12px);
 
-    font-size: 19px;
+    font-size: clamp(20px, 5vw, 30px);
+    font-weight: 900;
+
+    white-space: nowrap;
 }
 
 .quick-bar .emergency {
@@ -167,7 +170,7 @@ button:focus-visible {
 }
 
 .quick-bar .return-mode {
-    font-size: 42px;
+    font-size: clamp(32px, 8vw, 48px);
     line-height: 1;
     padding: 0;
 }
@@ -197,17 +200,21 @@ button:focus-visible {
     display: grid;
 
     grid-template-columns:
-        1fr 1fr;
+        repeat(2, minmax(0, 1fr));
 
-    gap: 14px;
+    gap: clamp(8px, 2.5vw, 16px);
 }
 
 .buttons button {
-    min-height: 112px;
+    min-width: 0;
 
-    padding: 12px 8px;
+    min-height: clamp(96px, 15vh, 145px);
 
-    font-size: 22px;
+    padding:
+        clamp(8px, 2vw, 14px)
+        clamp(6px, 1.5vw, 10px);
+
+    font-size: clamp(18px, 4.2vw, 27px);
 }
 
 
@@ -219,17 +226,21 @@ button:focus-visible {
     display: grid;
 
     grid-template-columns:
-        1fr 1fr;
+        repeat(2, minmax(0, 1fr));
 
-    gap: 14px;
+    gap: clamp(8px, 2.5vw, 16px);
 }
 
 .phrase-buttons button {
-    min-height: 100px;
+    min-width: 0;
 
-    padding: 12px 8px;
+    min-height: clamp(88px, 13vh, 125px);
 
-    font-size: 20px;
+    padding:
+        clamp(8px, 2vw, 14px)
+        clamp(6px, 1.5vw, 10px);
+
+    font-size: clamp(17px, 3.8vw, 24px);
 }
 
 
@@ -260,17 +271,19 @@ button:focus-visible {
     display: grid;
 
     grid-template-columns:
-        1fr 1fr;
+        repeat(2, minmax(0, 1fr));
 
-    gap: 12px;
+    gap: clamp(8px, 2vw, 14px);
 }
 
 .pain-locations button {
-    min-height: 88px;
+    min-width: 0;
 
-    padding: 8px;
+    min-height: clamp(76px, 11vh, 105px);
 
-    font-size: 19px;
+    padding: clamp(6px, 1.5vw, 10px);
+
+    font-size: clamp(17px, 3.7vw, 23px);
 }
 
 
@@ -282,19 +295,21 @@ button:focus-visible {
     display: grid;
 
     grid-template-columns:
-        repeat(3, 1fr);
+        repeat(3, minmax(0, 1fr));
 
-    gap: 12px;
+    gap: clamp(8px, 2vw, 14px);
 
-    margin-top: 20px;
+    margin-top: clamp(14px, 3vw, 22px);
 }
 
 .pain-scale button {
-    min-height: 82px;
+    min-width: 0;
+
+    min-height: clamp(68px, 10vh, 94px);
 
     padding: 6px;
 
-    font-size: 31px;
+    font-size: clamp(25px, 6vw, 38px);
 }
 
 .change-location {
@@ -319,7 +334,7 @@ button:focus-visible {
     display: block;
 
     width: 100%;
-    min-height: 190px;
+	min-height: clamp(150px, 25vh, 230px);
 
     padding: 18px;
 
@@ -329,7 +344,7 @@ button:focus-visible {
     background: white;
     color: #111;
 
-    font-size: 28px;
+    font-size: clamp(22px, 5vw, 32px);
     line-height: 1.35;
 
     resize: vertical;
@@ -351,19 +366,21 @@ button:focus-visible {
     display: grid;
 
     grid-template-columns:
-        1fr 1fr;
+        repeat(2, minmax(0, 1fr));
 
-    gap: 10px;
+    gap: clamp(7px, 2vw, 12px);
 
-    margin-bottom: 18px;
+    margin-bottom: clamp(14px, 3vw, 20px);
 }
 
 .quick-phrases button {
-    min-height: 76px;
+    min-width: 0;
 
-    padding: 8px;
+    min-height: clamp(66px, 10vh, 90px);
 
-    font-size: 17px;
+    padding: clamp(6px, 1.5vw, 10px);
+
+    font-size: clamp(15px, 3.5vw, 21px);
 }
 
 
@@ -493,77 +510,6 @@ button:focus-visible {
     text-align: center;
 
     font-size: 18px;
-}
-
-
-/* =========================================
-   PETITS ÉCRANS
-   ========================================= */
-
-@media (max-width: 420px) {
-
-    .app {
-        padding-left: 12px;
-        padding-right: 12px;
-    }
-
-    h1 {
-        font-size: 29px;
-    }
-
-    h2 {
-        font-size: 22px;
-    }
-
-    .buttons,
-    .phrase-buttons {
-        gap: 10px;
-    }
-
-    .buttons button {
-        min-height: 105px;
-        font-size: 20px;
-    }
-
-    .phrase-buttons button {
-        min-height: 96px;
-        font-size: 18px;
-    }
-
-    .quick-bar {
-        gap: 4px;
-        padding-left: 5px;
-        padding-right: 5px;
-    }
-
-    .quick-bar button {
-        min-height: 68px;
-        font-size: 17px;
-    }
-
-    .custom-text {
-        font-size: 25px;
-    }
-}
-
-
-/* =========================================
-   TRÈS PETITS ÉCRANS
-   ========================================= */
-
-@media (max-width: 350px) {
-
-    .quick-bar button {
-        font-size: 15px;
-    }
-
-    .buttons button {
-        font-size: 18px;
-    }
-
-    .phrase-buttons button {
-        font-size: 17px;
-    }
 }
 
 /* =========================================
