@@ -709,61 +709,19 @@ function shareAppByEmail() {
         "Une app pour faire parler un patient aphone";
 
 
-    const body =
-`Vous êtes invité-e à découvrir « Ma Voix », une application gratuite et simple, développée à partir des besoins rencontrés auprès de patients et de soignants en milieu hospitalier à Genève, pour aider les patients avec trachéotomie ou aphones à sortir de leur prison du silence.
+	const body =
+	`Vous êtes invité-e à découvrir « Ma Voix », une application gratuite destinée à aider les patients avec trachéotomie ou aphones à communiquer.
 
-Le principe de l'application est très simple :
+	Découvrir et installer Ma Voix :
+	https://wrelax1.github.io/ma-voix/
 
-Le patient dispose de gros boutons correspondant à ce qu'il peut vouloir dire — par exemple Oui, Non, Stop, HEP!, J'ai mal, Respiration, Position, Soins, Toilettes, Famille / Amis, Émotions, Questions, etc.
+	L'application ne nécessite aucun compte ; 0 impact sur la confidentialité des données.
 
-Il lui suffit d'appuyer sur un bouton et le téléphone ou la tablette prononce la phrase à sa place.
+	Après son installation, Ma Voix peut fonctionner sans connexion Internet.
 
-Quelques informations importantes :
+	Les instructions d'installation pour iPhone, Android, smartphone et tablette sont disponibles dans l'application.
 
-• L'application ne nécessite aucun compte ; 0 impact sur la confidentialité des données.
-
-• Elle fonctionne sur Android et iPhone, smartphone et tablette, avec un affichage adaptatif à la taille de l'écran.
-
-• Une connexion Internet est nécessaire uniquement pour la première installation et pour les éventuelles mises à jour ultérieures.
-
-• Après son installation, l'application peut fonctionner sans connexion Internet, notamment dans les chambres mal couvertes par le Wi-Fi.
-
-
-Vous pouvez accéder à l'application ici :
-
-👉 https://wrelax1.github.io/ma-voix/
-
-
-Pour pouvoir l'utiliser facilement comme une application normale et également hors connexion, son installation sur l'écran d'accueil est conseillée.
-
-
-SUR IPHONE
-
-1. Avec une connexion Internet active, ouvrir l'adresse ci-dessus avec Safari.
-
-2. Appuyer sur le bouton Partager.
-
-3. Choisir « Ajouter à l'écran d'accueil ».
-
-4. Vérifier que le nom est « Ma Voix », puis appuyer sur « Ajouter ».
-
-5. Ma Voix apparaîtra ensuite comme une application normale sur l'écran de l'iPhone.
-
-
-SUR ANDROID
-
-1. Avec une connexion Internet active, ouvrir l'adresse ci-dessus avec un navigateur tel que Chrome ou Edge.
-
-2. Appuyer sur les trois points ⋮ en haut à droite.
-
-3. Choisir « Installer l'application » ou « Ajouter à l'écran d'accueil ».
-
-4. Valider « Ma Voix ».
-
-5. Ma Voix apparaîtra ensuite comme une application normale sur l'écran du téléphone ou de la tablette.
-
-
-Redonnons une voix à ceux qui en sont privés.`;
+	Redonnons une voix à ceux qui en sont privés.`;
 
 
     const mailtoUrl =
