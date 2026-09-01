@@ -114,16 +114,11 @@
 				MON TÉLÉPHONE
 			</button>
 			
-			<button onclick="showScreen('writeScreen')">
-				⌨️<br>
-				ÉCRIRE
-			</button>
-			
-			<button onclick="openFavoritesScreen()">
+			<button onclick="openWriteScreen()">
 				⭐<br>
 				MES PHRASES
 			</button>
-					
+							
 			<button onclick="openVoiceScreen()">
 				⚙️<br>
 				VOIX
@@ -303,6 +298,16 @@
             <button onclick="selectPainLocation('à la jambe droite')">
                 JAMBE<br>DROITE
             </button>
+			
+			<button onclick="selectPainLocation('au pied gauche')">
+				PIED<br>
+				GAUCHE
+			</button>
+
+			<button onclick="selectPainLocation('au pied droit')">
+				PIED<br>
+				DROIT
+			</button>
 
         </div>
 
@@ -362,6 +367,14 @@
     <h1>Position / Confort</h1>
 
     <div class="phrase-buttons">
+
+        <button onclick="speak('Remettez-moi dans le lit, s’il vous plaît')">
+            COUCHEZ-MOI
+        </button>
+
+        <button onclick="speak('Mettez-moi sur le fauteuil, s’il vous plaît')">
+            ASSEYEZ-MOI
+        </button>
 
         <button onclick="speak('Remontez-moi dans le lit, s’il vous plaît')">
             REMONTEZ-MOI
@@ -972,7 +985,7 @@
         ← RETOUR
     </button>
 
-    <h1>Écrire</h1>
+    <h1>Mes phrases</h1>
 
 	<div class="quick-phrases">
 
@@ -1025,74 +1038,28 @@
         placeholder="Écrivez ici ce que vous voulez dire..."
     ></textarea>
 
-    <button
-        class="speak-text-button"
-        onclick="speakCustomText()"
-    >
-        🔊 DIRE LA PHRASE
-    </button>
+	<div class="write-actions">
 
-    <button
-        class="add-favorite-button"
-        onclick="saveFavoriteFromWrite()"
-    >
-        ⭐ ENREGISTRER DANS MES PHRASES
-    </button>
+		<button onclick="clearCustomText()">
+			🗑️ EFFACER
+		</button>
 
-    <button
-        class="clear-text-button"
-        onclick="clearCustomText()"
-    >
-        EFFACER
-    </button>
+		<button onclick="speakCustomText()">
+			🔊 DIRE
+		</button>
 
-</section>
+		<button onclick="saveFavoriteFromWrite()">
+			⭐ ENREGISTRER
+		</button>
 
-<!-- ======================================= -->
-<!-- MES PHRASES / FAVORIS -->
-<!-- ======================================= -->
-
-<section
-    id="favoritesScreen"
-    class="screen"
->
-
-    <button
-        class="back-button"
-        onclick="showScreen('homeScreen')"
-    >
-        ← RETOUR
-    </button>
-
-    <h1>Mes phrases</h1>
-	<!-- PHRASES PERSONNELLES -->
+	</div>
 
 	<h2>Mes phrases personnelles</h2>
 
 	<div
 		id="customFavorites"
 		class="custom-favorites"
-	>
-	</div>
-
-
-	<div class="favorite-editor">
-
-		<textarea
-			id="favoriteText"
-			class="favorite-text"
-			rows="3"
-			placeholder="Écrivez une nouvelle phrase..."
-		></textarea>
-
-		<button
-			class="add-favorite-button"
-			onclick="saveFavorite()"
-		>
-			⭐ AJOUTER AUX FAVORIS
-		</button>
-
-	</div>
+	></div>
 
 </section>
 

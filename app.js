@@ -165,6 +165,12 @@ function showScreen(screenId) {
     window.scrollTo(0, 0);
 }
 
+function openWriteScreen() {
+
+    renderCustomFavorites();
+
+    showScreen("writeScreen");
+}
 
 function loadFrenchVoices() {
 
@@ -780,21 +786,27 @@ function renderCustomFavorites() {
                 speak(phrase);
             };
 
+		const deleteButton =
+			document.createElement("button");
 
-        const deleteButton =
-            document.createElement("button");
+		deleteButton.className =
+			"favorite-delete-button";
 
-        deleteButton.className =
-            "favorite-delete-button";
+		deleteButton.textContent =
+			"🗑️";
 
-        deleteButton.textContent =
-            "SUPPRIMER";
+		deleteButton.setAttribute(
+			"aria-label",
+			"Supprimer la phrase"
+		);
 
-        deleteButton.onclick =
-            function() {
-                deleteFavorite(index);
-            };
+		deleteButton.onclick =
+			function(event) {
 
+				event.stopPropagation();
+
+				deleteFavorite(index);
+			};
 
         item.appendChild(speakButton);
 
